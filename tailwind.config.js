@@ -1,0 +1,53 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'monospace'],
+      },
+      colors: {
+        obsidian: '#07080C',
+      },
+      opacity: {
+        2: '0.02',
+        3: '0.03',
+        4: '0.04',
+        6: '0.06',
+        7: '0.07',
+        8: '0.08',
+        9: '0.09',
+        11: '0.11',
+        12: '0.12',
+        13: '0.13',
+        14: '0.14',
+        16: '0.16',
+        18: '0.18',
+        22: '0.22',
+        28: '0.28',
+        32: '0.32',
+        35: '0.35',
+        38: '0.38',
+        42: '0.42',
+        48: '0.48',
+        52: '0.52',
+        58: '0.58',
+        62: '0.62',
+        68: '0.68',
+        72: '0.72',
+        78: '0.78',
+        82: '0.82',
+        86: '0.86',
+        88: '0.88',
+        92: '0.92',
+        96: '0.96',
+      },
+      transitionTimingFunction: {
+        fluid: 'cubic-bezier(0.32, 0.72, 0, 1)',
+        snappy: 'cubic-bezier(0.2, 0, 0, 1)',
+      },
+    },
+  },
+  plugins: [],
+};

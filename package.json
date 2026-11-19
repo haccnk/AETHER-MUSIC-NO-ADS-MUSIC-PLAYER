@@ -1,0 +1,46 @@
+{
+  "name": "aether-music",
+  "version": "1.0.0",
+  "description": "Aether Music — Ad-free Liquid Glass Desktop Music Player & Batch Album Downloader",
+  "main": "dist-electron/main.cjs",
+  "author": "Aether Studio",
+  "license": "MIT",
+  "scripts": {
+    "build:electron": "esbuild electron/main.ts --bundle --platform=node --target=node22 --format=cjs --external:electron --external:ffmpeg-static --outfile=dist-electron/main.cjs && esbuild electron/preload.ts --bundle --platform=node --target=node22 --format=cjs --external:electron --outfile=dist-electron/preload.cjs",
+    "dev:vite": "vite --port 5173 --strictPort",
+    "dev:electron": "wait-on tcp:5173 && npm run build:electron && cross-env VITE_DEV_SERVER_URL=http://localhost:5173 electron .",
+    "dev": "concurrently -k \"npm:dev:vite\" \"npm:dev:electron\"",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc --noEmit && vite build && npm run build:electron",
+    "start": "npm run build && electron .",
+    "dist:win": "npm run build && node scripts/package-win.mjs"
+  },
+  "dependencies": {
+    "@phosphor-icons/react": "^2.1.7",
+    "clsx": "^2.1.1",
+    "ffmpeg-static": "^5.2.0",
+    "framer-motion": "^12.4.10",
+    "music-metadata": "^10.6.4",
+    "node-id3": "^0.2.8",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.0.2",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "electron": "^35.0.2",
+    "esbuild": "^0.25.1",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.2",
+    "vite": "^6.2.1",
+    "wait-on": "^8.0.3"
+  }
+}
